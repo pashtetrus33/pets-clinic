@@ -2,7 +2,7 @@ package ru.geekbrains.clinicservice.models;
 
 import java.time.LocalDate;
 
-public class Consultation{
+public class Consultation {
 
     //region private fields
     private int consultationId;
@@ -10,6 +10,23 @@ public class Consultation{
     private int petId;
     private String description;
     private LocalDate consultationDate;
+    //endregion
+
+    //region constructors
+    public Consultation() {
+    }
+
+    public Consultation(int clientId, int petId, String description, LocalDate consultationDate) {
+        this.clientId = clientId;
+        this.petId = petId;
+        this.description = description;
+        this.consultationDate = consultationDate;
+    }
+
+    public Consultation(int consultationId, int clientId, int petId, String description, LocalDate consultationDate) {
+        this(petId, clientId, description, consultationDate);
+        this.consultationId = consultationId;
+    }
     //endregion
 
 

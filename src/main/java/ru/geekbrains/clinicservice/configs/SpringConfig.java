@@ -3,8 +3,10 @@ package ru.geekbrains.clinicservice.configs;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.geekbrains.clinicservice.services.ClientRepository;
+import ru.geekbrains.clinicservice.services.ConsultationRepository;
 import ru.geekbrains.clinicservice.services.PetRepository;
 import ru.geekbrains.clinicservice.services.impl.SqlLiteClientRepository;
+import ru.geekbrains.clinicservice.services.impl.SqlLiteConsultationRepository;
 import ru.geekbrains.clinicservice.services.impl.SqlLitePetRepository;
 
 @Configuration
@@ -17,5 +19,10 @@ public class SpringConfig {
     @Bean(name = "petRepository")
     public PetRepository getPetRepository() {
         return new SqlLitePetRepository();
+    }
+
+    @Bean(name = "consultationRepository")
+    public ConsultationRepository getConsultationRepository() {
+        return new SqlLiteConsultationRepository();
     }
 }
