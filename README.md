@@ -8,6 +8,6 @@
 
 ![2](https://github.com/pashtetrus33/pets-clinic/assets/86385554/043bb877-a74a-4880-9f86-0d15a5eb764f))
 
-Unit tests with Diffblue cover plugin
+# Unit tests with Diffblue cover plugin
 
 ![12](https://github.com/pashtetrus33/pets-clinic/assets/86385554/cf80e741-4b9d-4815-8651-70ae89b741b6)
