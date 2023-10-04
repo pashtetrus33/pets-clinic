@@ -20,16 +20,16 @@ public class Client {
     public Client() {
     }
 
-    public Client(String document, String surname, String firstname, String patronymic, LocalDate birthday) {
-        this.document = document;
+    public Client(String surname, String firstname, String patronymic, String document, LocalDate birthday) {
         this.surname = surname;
         this.firstname = firstname;
         this.patronymic = patronymic;
+        this.document = document;
         this.birthday = birthday;
     }
 
-    public Client(int clientId, String document, String surname, String firstname, String patronymic, LocalDate birthday) {
-        this(document, surname, firstname, patronymic, birthday);
+    public Client(int clientId, String surname, String firstname, String patronymic, String document, LocalDate birthday) {
+        this(surname, firstname, patronymic,document, birthday);
         this.clientId = clientId;
     }
 

@@ -41,7 +41,7 @@ public class PetController {
     }
 
     @PutMapping(value = "/update/{petId}")
-    public int create(@RequestBody PetRequest updateRequest, @PathVariable(name = "petId") int petId) {
+    public int update(@RequestBody PetRequest updateRequest, @PathVariable(name = "petId") int petId) {
 
         return petRepository.update(new Pet(petId, updateRequest.getClientId(), updateRequest.getName(), updateRequest.getBirthday()));
     }

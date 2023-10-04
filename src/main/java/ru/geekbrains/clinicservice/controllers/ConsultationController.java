@@ -38,8 +38,8 @@ public class ConsultationController {
                 consultationRequest.getConsultationDate()));
     }
 
-    @PutMapping(value = "/update/{petId}")
-    public int create(@RequestBody ConsultationRequest updateRequest, @PathVariable(name = "consultationId") int consultationId) {
+    @PutMapping(value = "/update/{consultationId}")
+    public int update(@RequestBody ConsultationRequest updateRequest, @PathVariable(name = "consultationId") int consultationId) {
 
         return consultationRepository.update(new Consultation(consultationId, updateRequest.getClientId(), updateRequest.getPetId(), updateRequest.getDescription(),
                 updateRequest.getConsultationDate()));

@@ -31,11 +31,13 @@ public class ClinicServiceApplication {
         statement.execute("DROP TABLE IF EXISTS clients");
         statement.execute("DROP TABLE IF EXISTS pets");
         statement.execute("DROP TABLE IF EXISTS consultations");
-        statement.execute("create table clients (clientId INTEGER primary key AUTOINCREMENT," +
-                "document VARCHAR(50)," +
+
+        statement.execute("create table clients (" +
+                "clientId INTEGER primary key AUTOINCREMENT," +
                 "surname VARCHAR(25)," +
                 "firstname VARCHAR(25)," +
                 "patronymic VARCHAR(25)," +
+                "document VARCHAR(50)," +
                 "birthday INTEGER)");
         statement.execute("create table pets (petId INTEGER primary key AUTOINCREMENT," +
                 "clientId INTEGER," +

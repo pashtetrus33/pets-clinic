@@ -34,12 +34,12 @@ public class ClientController {
     @PostMapping(value = "/create")
     public int create(@RequestBody ClientRequest createRequest) {
 
-        return clientRepository.create(new Client(createRequest.getDocument(), createRequest.getFirstname(), createRequest.getSurname(), createRequest.getPatronymic(), createRequest.birthday));
+        return clientRepository.create(new Client(createRequest.getSurname(),createRequest.getFirstname(), createRequest.getPatronymic(),createRequest.getDocument(), createRequest.birthday));
     }
 
     @PutMapping(value = "/update/{clientId}")
-    public int create(@RequestBody ClientRequest updateRequest, @PathVariable(name = "clientId") int clientId) {
+    public int update(@RequestBody ClientRequest updateRequest, @PathVariable(name = "clientId") int clientId) {
 
-        return clientRepository.update(new Client(clientId, updateRequest.getDocument(), updateRequest.getFirstname(), updateRequest.getSurname(), updateRequest.getPatronymic(), updateRequest.birthday));
+        return clientRepository.update(new Client(clientId, updateRequest.getSurname(), updateRequest.getFirstname(), updateRequest.getPatronymic(),updateRequest.getDocument(), updateRequest.birthday));
     }
 }

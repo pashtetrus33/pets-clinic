@@ -21,10 +21,10 @@ public class SqlLiteClientRepository implements ClientRepository {
         log.info("create client request: " + item.getSurname());
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO clients VALUES(?,?,?,?,?,?)");
-            preparedStatement.setString(2, item.getDocument());
-            preparedStatement.setString(3, item.getSurname());
-            preparedStatement.setString(4, item.getFirstname());
-            preparedStatement.setString(5, item.getPatronymic());
+            preparedStatement.setString(2, item.getSurname());
+            preparedStatement.setString(3, item.getFirstname());
+            preparedStatement.setString(4, item.getPatronymic());
+            preparedStatement.setString(5, item.getDocument());
             preparedStatement.setLong(6, item.getBirthday().getLong(ChronoField.EPOCH_DAY));
             return preparedStatement.executeUpdate();
 
@@ -37,12 +37,12 @@ public class SqlLiteClientRepository implements ClientRepository {
     public int update(Client item) {
         log.info("update client request: " + item.getClientId());
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE clients SET document = ?," +
-                    "surname = ?, firstname = ?, patronymic = ?, birthday =? WHERE clientId = ?");
-            preparedStatement.setString(1, item.getDocument());
-            preparedStatement.setString(2, item.getSurname());
-            preparedStatement.setString(3, item.getFirstname());
-            preparedStatement.setString(4, item.getPatronymic());
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE clients SET surname = ?," +
+                    "firstname = ?, patronymic = ?, document = ?, birthday =? WHERE clientId = ?");
+            preparedStatement.setString(1, item.getSurname());
+            preparedStatement.setString(2, item.getFirstname());
+            preparedStatement.setString(3, item.getPatronymic());
+            preparedStatement.setString(4, item.getDocument());
             preparedStatement.setLong(5, item.getBirthday().getLong(ChronoField.EPOCH_DAY));
             preparedStatement.setLong(6, item.getClientId());
             return preparedStatement.executeUpdate();
@@ -79,10 +79,10 @@ public class SqlLiteClientRepository implements ClientRepository {
 
                 if (resultSet.next()) {
                     client = new Client(resultSet.getInt("clientId"),
-                            resultSet.getString("document"),
                             resultSet.getString("surname"),
                             resultSet.getString("firstname"),
                             resultSet.getString("patronymic"),
+                            resultSet.getString("document"),
                             LocalDate.ofEpochDay(resultSet.getLong("birthday")));
                 }
             }
@@ -103,10 +103,10 @@ public class SqlLiteClientRepository implements ClientRepository {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     clients.add(new Client(resultSet.getInt("clientId"),
-                            resultSet.getString("document"),
                             resultSet.getString("surname"),
                             resultSet.getString("firstname"),
                             resultSet.getString("patronymic"),
+                            resultSet.getString("document"),
                             LocalDate.ofEpochDay(resultSet.getLong("birthday"))));
                 }
             }
